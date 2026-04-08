@@ -97,7 +97,7 @@ npm run dev
 
   ```bash
   curl -X POST \
-    -H "Authorization: Bearer $JIRA_API_TOKEN" \
+    -H "Authorization: Basic $JIRA_API_TOKEN_BASIC" \
     -H "X-Atlassian-Token: no-check" \
     -F "file=@{{PROJECT_PATH}}/tmp/{{TICKET}}/09-test-result/images/CP-XXXX-tc-01.png" \
     "https://juzmatch-tbi.atlassian.net/rest/api/3/issue/CP-XXXX/attachments"
