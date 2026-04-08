@@ -1,7 +1,8 @@
 # Claude Workflow — poc-ai-agent
 
 ## Project Config
-- **Project Path:** `/Users/user/Projects/poc-ai-agent`
+
+- **Project Path:** `{{PROJECT_PATH}}`
 - **Git Remote:** GitHub
 - **PR Target Branch:** `main`
 - **Branch Pattern:** `feat/{{TICKET-CODE}}-short-description`
@@ -23,7 +24,7 @@ When user says **"doing CP-XXXX"** or **"Start workflow for CP-XXXX"**, execute 
 
 ### Step 2 — 📂 Open Project & Sync
 ```bash
-cd /Users/user/Projects/poc-ai-agent
+cd {{PROJECT_PATH}}
 git status
 git checkout main
 git pull origin main
@@ -33,7 +34,7 @@ git pull origin main
 - Analyze the ticket requirements
 - Identify affected files, components, and routes
 - Write a clear implementation plan
-- **Save to file** at `/tmp/{{timestamp}}{{TICKET}}/03-implementation-plan.md` with format:
+- **Save to file** at `{{PROJECT_PATH}}/tmp/{{TICKET}}/03-implementation-plan.md` with format:
   ```
   🧠 Implementation Plan — [TICKET-CODE]
   
@@ -58,7 +59,7 @@ git checkout -b feat/{{TICKET-CODE}}-short-description
 
 ### Step 6 — 🧪 Write Test Cases
 - Write manual browser test scenarios based on acceptance criteria
-- **Save to file** at `/tmp/{{timestamp}}{{TICKET}}/06-test-case.md` with format:
+- **Save to file** at `{{PROJECT_PATH}}/tmp/{{TICKET}}/06-test-case.md` with format:
 
   ```
   TC-01: [Test name]
@@ -89,7 +90,7 @@ npm run dev
 ### Step 9 — 🔍 Visual Testing & Post Results
 - Visually test each TC scenario in the browser using Claude in Chrome
 - For **each TC**, take a screenshot of the relevant UI state as evidence:
-  - Name screenshots as `CP-XXXX-tc-01.png`, `CP-XXXX-tc-02.png`, etc. saved to `/tmp/{{timestamp}}{{TICKET}}/09-{{timestamp}}-test-result/images/`
+  - Name screenshots as `CP-XXXX-tc-01.png`, `CP-XXXX-tc-02.png`, etc. saved to `{{PROJECT_PATH}}/tmp/{{TICKET}}/09-test-result/images/`
   - Screenshot should capture the relevant page/component state for that TC
 - Capture findings (pass/fail per TC)
 - **Upload each screenshot as an attachment to Jira** using `curl` with the Jira REST API, and capture the returned attachment URL:
@@ -98,12 +99,12 @@ npm run dev
   curl -X POST \
     -H "Authorization: Bearer $JIRA_API_TOKEN" \
     -H "X-Atlassian-Token: no-check" \
-    -F "file=@/tmp/{{timestamp}}{{TICKET}}/09-{{timestamp}}-test-result/images/CP-XXXX-tc-01.png" \
+    -F "file=@{{PROJECT_PATH}}/tmp/{{TICKET}}/09-test-result/images/CP-XXXX-tc-01.png" \
     "https://juzmatch-tbi.atlassian.net/rest/api/3/issue/CP-XXXX/attachments"
   ```
 
   - Save the `content` URL from the response JSON for each screenshot — you'll need it in Step 10
-- **Save results to file** at `/tmp/{{timestamp}}{{TICKET}}/09-{{timestamp}}-test-result.md` with format:
+- **Save results to file** at `{{PROJECT_PATH}}/tmp/{{TICKET}}/09-test-result.md` with format:
 
   ```
   📊 Test Results — [TICKET-CODE]
