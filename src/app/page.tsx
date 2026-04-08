@@ -39,18 +39,18 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-32 pb-24 px-4">
         {/* Background gradient blobs */}
-        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-violet-200 opacity-40 blur-3xl pointer-events-none" />
-        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-indigo-200 opacity-40 blur-3xl pointer-events-none" />
+        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-yellow-200 opacity-40 blur-3xl pointer-events-none" />
+        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-amber-200 opacity-40 blur-3xl pointer-events-none" />
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-200 bg-violet-50 text-violet-700 text-xs font-semibold uppercase tracking-wider mb-6">
-            <span className="w-2 h-2 rounded-full bg-violet-500 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-200 bg-yellow-50 text-yellow-700 text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
             Now in Beta
           </div>
 
           <h1 className="text-5xl sm:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
             Build smarter agents
-            <span className="block bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-600 to-amber-600 bg-clip-text text-transparent">
               ship faster products
             </span>
           </h1>
@@ -63,7 +63,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="#"
-              className="px-8 py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-200"
+              className="px-8 py-4 rounded-xl text-base font-semibold text-white bg-gradient-to-r from-yellow-500 to-amber-500 hover:from-yellow-600 hover:to-amber-600 shadow-lg hover:shadow-xl transition-all duration-200"
             >
               Start for free →
             </Link>
@@ -125,17 +125,17 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-24 px-4">
-        <div className="max-w-3xl mx-auto text-center bg-gradient-to-br from-violet-600 to-indigo-700 rounded-3xl p-12 shadow-2xl relative overflow-hidden">
+        <div className="max-w-3xl mx-auto text-center bg-gradient-to-br from-yellow-400 to-amber-500 rounded-3xl p-12 shadow-2xl relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.15),transparent)] pointer-events-none" />
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 relative z-10">
             Ready to build your first agent?
           </h2>
-          <p className="text-violet-200 mb-8 text-lg relative z-10">
+          <p className="text-yellow-900 mb-8 text-lg relative z-10">
             Join thousands of developers already building the future with POCAgent.
           </p>
           <Link
             href="#"
-            className="relative z-10 inline-block px-8 py-4 rounded-xl text-base font-semibold text-violet-700 bg-white hover:bg-violet-50 shadow-lg hover:shadow-xl transition-all duration-200"
+            className="relative z-10 inline-block px-8 py-4 rounded-xl text-base font-semibold text-yellow-700 bg-white hover:bg-yellow-50 shadow-lg hover:shadow-xl transition-all duration-200"
           >
             Get started free →
           </Link>
