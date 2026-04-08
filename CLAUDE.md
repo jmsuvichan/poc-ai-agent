@@ -33,7 +33,7 @@ git pull origin main
 - Analyze the ticket requirements
 - Identify affected files, components, and routes
 - Write a clear implementation plan
-- **Post as a Jira comment** on the ticket with format:
+- **Save to file** at `/tmp/{{timestamp}}{{TICKET}}/03-implementation-plan.md` with format:
   ```
   🧠 Implementation Plan — [TICKET-CODE]
   
@@ -42,6 +42,7 @@ git pull origin main
   **Steps:** ...
   **Estimated complexity:** ...
   ```
+- **Post as a Jira comment** on the ticket using the same content from the saved file
 
 ### Step 4 — 🌿 Create Feature Branch
 ```bash
@@ -57,7 +58,8 @@ git checkout -b feat/{{TICKET-CODE}}-short-description
 
 ### Step 6 — 🧪 Write Test Cases
 - Write manual browser test scenarios based on acceptance criteria
-- Format:
+- **Save to file** at `/tmp/{{timestamp}}{{TICKET}}/06-test-case.md` with format:
+
   ```
   TC-01: [Test name]
   - Given: ...
@@ -68,7 +70,8 @@ git checkout -b feat/{{TICKET-CODE}}-short-description
   ```
 
 ### Step 7 — 💬 Post Test Cases to Jira
-- **Post as a Jira comment** on the ticket with format:
+- **Post as a Jira comment** on the ticket using the same content from the saved file, with format:
+
   ```
   🧪 Test Cases — [TICKET-CODE]
   
@@ -86,7 +89,7 @@ npm run dev
 ### Step 9 — 🔍 Visual Testing & Post Results
 - Visually test each TC scenario in the browser using Claude in Chrome
 - For **each TC**, take a screenshot of the relevant UI state as evidence:
-  - Name screenshots as `CP-XXXX-tc-01.png`, `CP-XXXX-tc-02.png`, etc. saved to `tmp/` inside the repository root
+  - Name screenshots as `CP-XXXX-tc-01.png`, `CP-XXXX-tc-02.png`, etc. saved to `/tmp/{{timestamp}}{{TICKET}}/09-{{timestamp}}-test-result/images/`
   - Screenshot should capture the relevant page/component state for that TC
 - Capture findings (pass/fail per TC)
 - **Upload each screenshot as an attachment to Jira** using `curl` with the Jira REST API, and capture the returned attachment URL:
@@ -95,11 +98,13 @@ npm run dev
   curl -X POST \
     -H "Authorization: Bearer $JIRA_API_TOKEN" \
     -H "X-Atlassian-Token: no-check" \
-    -F "file=@/Users/user/Projects/poc-ai-agent/tmp/CP-XXXX-tc-01.png" \
+    -F "file=@/tmp/{{timestamp}}{{TICKET}}/09-{{timestamp}}-test-result/images/CP-XXXX-tc-01.png" \
     "https://juzmatch-tbi.atlassian.net/rest/api/3/issue/CP-XXXX/attachments"
   ```
+
   - Save the `content` URL from the response JSON for each screenshot — you'll need it in Step 10
-- **Post as a Jira comment** on the ticket with format:
+- **Save results to file** at `/tmp/{{timestamp}}{{TICKET}}/09-{{timestamp}}-test-result.md` with format:
+
   ```
   📊 Test Results — [TICKET-CODE]
   
@@ -110,6 +115,8 @@ npm run dev
   ❌ TC-03: FAILED — [issue description]
      📸 Screenshot: [Jira attachment URL — shows the failure]
   ```
+
+- **Post as a Jira comment** on the ticket using the same content from the saved file
 
 ### Step 10 — 🚀 Push & Open PR
 
