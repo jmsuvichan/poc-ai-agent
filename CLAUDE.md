@@ -85,23 +85,54 @@ npm run dev
 
 ### Step 9 — 🔍 Visual Testing & Post Results
 - Visually test each TC scenario in the browser using Claude in Chrome
+- For **each TC**, take a screenshot of the relevant UI state as evidence:
+  - Name screenshots as `tc-01.png`, `tc-02.png`, etc. saved to `/tmp/`
+  - Screenshot should capture the relevant page/component state for that TC
 - Capture findings (pass/fail per TC)
+- **Upload each screenshot as an attachment** to the Jira ticket using the Atlassian MCP tool
 - **Post as a Jira comment** on the ticket with format:
   ```
   📊 Test Results — [TICKET-CODE]
   
   ✅ TC-01: PASSED — ...
+     📸 Screenshot: [tc-01.png attached]
   ✅ TC-02: PASSED — ...
+     📸 Screenshot: [tc-02.png attached]
   ❌ TC-03: FAILED — [issue description]
+     📸 Screenshot: [tc-03.png attached — shows the failure]
   ```
 
 ### Step 10 — 🚀 Push & Open PR
+
 ```bash
 git add .
 git commit -m "feat(CP-XXXX): short description"
 git push origin feat/CP-XXXX-short-description
-gh pr create --base main --title "feat(CP-XXXX): short description" --body "## Summary\n...\n\n## Jira\nhttps://juzmatch-tbi.atlassian.net/browse/CP-XXXX\n\n## Test Results\n..."
 ```
+
+- Open PR using `gh pr create` with the following body template:
+
+  ```
+  # Ticket
+  https://juzmatch-tbi.atlassian.net/browse/CP-XXXX
+  
+  # Summary
+  - 
+  - 
+  - 
+  
+  # Proof of Work
+  
+  ![TC-01](paste screenshot from /tmp/tc-01.png)
+  ![TC-02](paste screenshot from /tmp/tc-02.png)
+  
+  # Remark
+  
+  ```
+
+- Fill in **Summary** bullets from the implementation plan
+- **Proof of Work** must include screenshots taken during Step 9 (embed or reference the uploaded images)
+- **Remark** is optional — add only if there are known limitations, follow-up tasks, or reviewer notes
 
 ---
 
